@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
+from app.routers import router as auth_router
 import time
 import sqlalchemy
 
-# Esperar a que PostgreSQL esté listo
 def wait_for_db():
     max_retries = 10
     retry_interval = 3
@@ -37,6 +37,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Registrar routers
+app.include_router(auth_router)
 
 @app.get("/")
 def root():
