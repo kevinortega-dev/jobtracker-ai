@@ -1,0 +1,47 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.database import engine, Base
+import time
+import sqlalchemy
+
+# Esperar a que PostgreSQL esté listo
+def wait_for_db():
+    max_retries = 10
+    retry_interval = 3
+    for attempt in range(max_retries):
+        try:
+            with engine.connect() as conn:
+                print("✅ Conexión a base de datos exitosa!")
+                return
+        except sqlalchemy.exc.OperationalError:
+            print(f"⏳ Esperando base de datos... intento {attempt + 1}/{max_retries}")
+            time.sleep(retry_interval)
+    raise Exception("❌ No se pudo conectar a la base de datos")
+
+wait_for_db()
+
+# Crear tablas automáticamente
+Base.metadata.create_all(bind=engine)
+
+app = FastAPI(
+    title="JobTracker AI",
+    description="API para seguimiento de postulaciones laborales con IA",
+    version="1.0.0"
+)
+
+# Configurar CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/")
+def root():
+    return {"message": "JobTracker AI API funcionando! 🚀"}
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
