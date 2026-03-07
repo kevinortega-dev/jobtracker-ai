@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
 from app.routers import router as auth_router
+from app.routers.applications import router as applications_router
 import time
 import sqlalchemy
 
@@ -40,6 +41,7 @@ app.add_middleware(
 
 # Registrar routers
 app.include_router(auth_router)
+app.include_router(applications_router)
 
 @app.get("/")
 def root():
