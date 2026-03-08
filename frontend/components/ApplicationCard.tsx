@@ -4,9 +4,10 @@ interface ApplicationCardProps {
   application: Application;
   onEdit: (application: Application) => void;
   onDelete: (id: number) => void;
+  onAnalyze: (application: Application) => void;
 }
 
-export default function ApplicationCard({ application, onEdit, onDelete }: ApplicationCardProps) {
+export default function ApplicationCard({ application, onEdit, onDelete, onAnalyze }: ApplicationCardProps) {
   const statusOption = STATUS_OPTIONS.find((s) => s.value === application.status);
 
   return (
@@ -31,6 +32,12 @@ export default function ApplicationCard({ application, onEdit, onDelete }: Appli
         </span>
         <div className="flex gap-2">
           <button
+            onClick={() => onAnalyze(application)}
+            className="bg-blue-600/50 hover:bg-blue-600 text-white text-xs px-3 py-1.5 rounded-lg transition-colors"
+          >
+            🤖 IA
+          </button>
+          <button
             onClick={() => onEdit(application)}
             className="bg-purple-600/50 hover:bg-purple-600 text-white text-xs px-3 py-1.5 rounded-lg transition-colors"
           >
@@ -40,10 +47,10 @@ export default function ApplicationCard({ application, onEdit, onDelete }: Appli
             onClick={() => onDelete(application.id)}
             className="bg-red-600/50 hover:bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg transition-colors"
           >
-            🗑️ Eliminar
+            🗑️
           </button>
         </div>
       </div>
     </div>
   );
-} 
+}

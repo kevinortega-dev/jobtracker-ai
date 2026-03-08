@@ -14,13 +14,16 @@ import {
 import StatsCards from "@/components/StatsCards";
 import ApplicationCard from "@/components/ApplicationCard";
 import ApplicationModal from "@/components/ApplicationModal";
+import AIAnalysisModal from "@/components/AIAnalysisModal";
 
 export default function DashboardPage() {
   const router = useRouter();
   const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAIModalOpen, setIsAIModalOpen] = useState(false);
   const [editingApp, setEditingApp] = useState<Application | null>(null);
+  const [analyzingApp, setAnalyzingApp] = useState<Application | null>(null);
   const [filterStatus, setFilterStatus] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -78,6 +81,11 @@ export default function DashboardPage() {
   const handleEdit = (application: Application) => {
     setEditingApp(application);
     setIsModalOpen(true);
+  };
+
+  const handleAnalyze = (application: Application) => {
+    setAnalyzingApp(application);
+    setIsAIModalOpen(true);
   };
 
   const filteredApplications = applications.filter((app) => {
@@ -161,18 +169,26 @@ export default function DashboardPage() {
                 application={app}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
+                onAnalyze={handleAnalyze}
               />
             ))}
           </div>
         )}
       </div>
 
-      {/* Modal */}
+      {/* Modal CRUD */}
       <ApplicationModal
         isOpen={isModalOpen}
         onClose={() => { setIsModalOpen(false); setEditingApp(null); }}
         onSubmit={editingApp ? handleUpdate : handleCreate}
         application={editingApp}
+      />
+
+      {/* Modal IA */}
+      <AIAnalysisModal
+        isOpen={isAIModalOpen}
+        onClose={() => { setIsAIModalOpen(false); setAnalyzingApp(null); }}
+        application={analyzingApp}
       />
     </div>
   );

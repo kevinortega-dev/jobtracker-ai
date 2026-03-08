@@ -25,24 +25,28 @@ export default function ApplicationModal({
   });
 
   useEffect(() => {
-    if (application) {
-      setFormData({
-        company: application.company,
-        position: application.position,
-        status: application.status,
-        job_description: application.job_description || "",
-        notes: application.notes || "",
-      });
-    } else {
-      setFormData({
-        company: "",
-        position: "",
-        status: "applied",
-        job_description: "",
-        notes: "",
-      });
-    }
-  }, [application, isOpen]);
+    if (!isOpen) return;
+    
+    setTimeout(() => {
+      if (application) {
+        setFormData({
+          company: application.company,
+          position: application.position,
+          status: application.status,
+          job_description: application.job_description || "",
+          notes: application.notes || "",
+        });
+      } else {
+        setFormData({
+          company: "",
+          position: "",
+          status: "applied",
+          job_description: "",
+          notes: "",
+        });
+      }
+    }, 0);
+  }, [isOpen, application]);
 
   if (!isOpen) return null;
 

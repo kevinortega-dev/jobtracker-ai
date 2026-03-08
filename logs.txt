@@ -1,0 +1,26 @@
+✅ Conexión a base de datos exitosa!
+INFO:     172.18.0.1:38342 - "OPTIONS /applications/ HTTP/1.1" 200 OK
+INFO:     172.18.0.1:38342 - "GET /applications/ HTTP/1.1" 200 OK
+INFO:     172.18.0.1:36342 - "GET /applications/ HTTP/1.1" 200 OK
+INFO:     172.18.0.1:53718 - "OPTIONS /ai/analyze HTTP/1.1" 200 OK
+INFO:     172.18.0.1:53718 - "POST /ai/analyze HTTP/1.1" 401 Unauthorized
+INFO:     172.18.0.1:53732 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     172.18.0.1:53732 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     172.18.0.1:53732 - "GET /applications/ HTTP/1.1" 200 OK
+INFO:     172.18.0.1:53732 - "GET /applications/ HTTP/1.1" 200 OK
+INFO:     172.18.0.1:54004 - "POST /ai/analyze HTTP/1.1" 500 Internal Server Error
+INFO:     172.18.0.1:50626 - "OPTIONS /applications/ HTTP/1.1" 200 OK
+INFO:     172.18.0.1:50626 - "POST /applications/ HTTP/1.1" 201 Created
+INFO:     172.18.0.1:50626 - "GET /applications/ HTTP/1.1" 200 OK
+INFO:     172.18.0.1:50628 - "POST /ai/analyze HTTP/1.1" 500 Internal Server Error
+INFO:     172.18.0.1:33050 - "OPTIONS /applications/5 HTTP/1.1" 200 OK
+INFO:     172.18.0.1:33050 - "PUT /applications/5 HTTP/1.1" 200 OK
+INFO:     172.18.0.1:33050 - "GET /applications/ HTTP/1.1" 200 OK
+INFO:     172.18.0.1:45292 - "POST /ai/analyze HTTP/1.1" 500 Internal Server Error
+INFO:     172.18.0.1:55344 - "PUT /applications/5 HTTP/1.1" 200 OK
+INFO:     172.18.0.1:55344 - "GET /applications/ HTTP/1.1" 200 OK
+INFO:     172.18.0.1:33782 - "POST /ai/analyze HTTP/1.1" 500 Internal Server Error
+INFO:     172.18.0.1:45198 - "POST /applications/ HTTP/1.1" 201 Created
+INFO:     172.18.0.1:45198 - "GET /applications/ HTTP/1.1" 200 OK
+INFO:     172.18.0.1:52710 - "OPTIONS /ai/analyze HTTP/1.1" 200 OK
+INFO:     172.18.0.1:52710 - "POST /ai/analyze HTTP/1.1" 500 Internal Server Error
