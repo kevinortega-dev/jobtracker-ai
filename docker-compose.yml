@@ -23,7 +23,7 @@ services:
       - SECRET_KEY=supersecretkey123changethisinproduction
       - ALGORITHM=HS256
       - ACCESS_TOKEN_EXPIRE_MINUTES=30
-      - GEMINI_API_KEY=AIzaSyDymL2sOLoe6emAYDb1tFttbdrYEcjvzcA
+      - GEMINI_API_KEY=AIzaSyBgvmjiuYGt2H-Xaakx0OqNnQf1stNvMTU
     depends_on:
       - db
     volumes:
